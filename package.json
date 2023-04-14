@@ -11,5 +11,9 @@
     "docker": "docker build -t codenames-game dist",
     "build-docker": "npm run build && npm run docker",
     "start": "env NODE_ENV=production node ./dist/server/main.js"
+  },
+  "dependencies": {
+    "cp-cli": "^2.0.0",
+    "tslib": "^2.5.0"
   }
 }
