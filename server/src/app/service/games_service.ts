@@ -106,6 +106,7 @@ export class GamesService implements OnApplicationInit {
         if (playerType == PlayerType.Spymaster) {
             board = game.board.map(card => <Agent> {
                 name: card.name,
+                transcript: card.transcript,
                 side: card.side,
                 uncovered: card.uncovered
             });
@@ -113,6 +114,7 @@ export class GamesService implements OnApplicationInit {
         else {
             board = game.board.map(card => <Agent> {
                 name: card.name,
+                transcript: card.transcript,
                 side: card.uncovered ? card.side : Side.UNKNOWN
             });
         }
@@ -130,7 +132,9 @@ export class GamesService implements OnApplicationInit {
     }
 
     async uncoverAgent(gameId: string, agentIndex: number): Promise<Agent> {
+        console.log("BEFORE GAME");
         const game = this.games.get(gameId);
+        console.log("AFTER GAME");
         assert.found(game, createGameError(ErrorCode.GameNotFound));
         assert.found(game.board[agentIndex], createGameError(ErrorCode.AgentNotFound));
 

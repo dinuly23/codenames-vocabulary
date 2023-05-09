@@ -1,0 +1,30 @@
+<div class="main-container">
+    <div class="header">
+        <div class="icon">
+            <img src="assets/img/icon.png">
+        </div>
+        <ul>
+            <li [routerLinkActive]="'activ'">
+                <a [routerLink]="['home']" translate="HOME"></a>
+            </li>
+            <li [routerLinkActive]="'activ'">
+                <a [routerLink]="['game']" translate="GAME"></a>
+            </li>
+            <li [routerLinkActive]="'activ'">
+                <a [routerLink]="['rules']" translate="RULES"></a>
+            </li>
+            <li class="language-dropdown">
+                <button class="language-button" (mouseenter)="openDropdown()">{{ currentLanguage }}</button>
+                <div class="language-menu" *ngIf="dropdownOpen">
+                    <a (click)="changeLanguage('en')">English</a>
+                    <a (click)="changeLanguage('ru')">Русский</a>
+                    <a (click)="changeLanguage('kz')">Қазақ</a>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

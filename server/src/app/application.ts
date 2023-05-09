@@ -1,4 +1,5 @@
 import * as compression from 'compression';
+import * as cors from 'cors';
 import * as express from 'express';
 import * as express_ws from 'express-ws';
 import * as fs from 'fs';
@@ -60,7 +61,8 @@ export class Application {
             .use(compression())
             .use(requestContext.expressMiddleware())
             .use(expressRequestIdMiddleware(requestContext))
-            .use(expressLogMiddleware(req => requestContext.get(req).uid));
+            .use(expressLogMiddleware(req => requestContext.get(req).uid))
+            .use(cors());
 
         await this.initModules(
             gamesService,

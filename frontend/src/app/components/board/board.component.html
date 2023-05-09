@@ -1,0 +1,24 @@
+<button (click)="getGameStatus()">status game</button>
+<div class="game-board">
+    <div class="game-row" *ngFor="let row of [0, 1, 2, 3, 4]">
+        <div class="game-card neonText" *ngFor="let col of [0, 1, 2, 3, 4]">
+            <mat-card class="mat-card">
+                <mat-card-content class="mat-card-content">
+                    {{ cards[row * 5 + col].name }}
+                </mat-card-content >
+                <hr class="white-line" />
+                <div class="transcript">
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" class="circle-button" 
+                            (click)="playCardContent(cardContent.innerText)">
+                            &#xf028;
+                    </button>
+                </mat-card-actions>
+                <mat-card-content class="mat-card-content" #cardContent>
+                    {{ cards[row * 5 + col].transcript}}
+                </mat-card-content>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

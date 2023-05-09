@@ -1,0 +1,77 @@
+.game-board {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.game-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.game-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.mat-card {
+  width: 100%;
+  height: 100%;
+  background-color: #6b059e; 
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);  
+  border-radius: 4px;
+  position: relative;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  z-index: 1;
+}
+
+.mat-card:hover {
+  transform: scale(1.5);
+  box-shadow: 0 14px 28px rgba(32, 203, 255, 0.25), 
+              0 10px 10px rgba(24, 229, 252, 0.199);
+  z-index: 1000;
+}
+
+.mat-card-content{
+  display: flex;
+  align-items: center;
+}
+
+.transcript{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.neonText {
+  color: #fff;
+}
+
+.white-line {
+  border: none;
+  border-top: 2px solid white; /* Set the desired thickness of the line */
+  width: 80%; /* Set the desired width of the line */
+}
+
+.circle-button {
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background: rgb(255,161,213);
+  background: linear-gradient(90deg, rgba(255,161,213,1) 0%, rgba(104,28,251,1) 99%);
+}
+

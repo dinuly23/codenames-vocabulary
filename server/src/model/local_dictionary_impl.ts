@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import * as shuffle from 'shuffle-array';
 import { Dictionary } from './dictionary';
+import { Word } from './word';
 
 export class LocalDictionaryImpl implements Dictionary {
     /**
@@ -11,7 +12,7 @@ export class LocalDictionaryImpl implements Dictionary {
 
     name = '';
     description = '';
-    dictionary: string[] = [];
+    dictionary: Word[] = [];
 
     constructor(fileName?: string) {
         if (fileName)
@@ -37,9 +38,19 @@ export class LocalDictionaryImpl implements Dictionary {
             .split(/[\s;,]+/)
             .map(w => w.trim())
             .filter(w => w != '');
-        const unique = new Set(words);
+        const transcripts = String(doc.transcripts)
+            .split(/[\s;,]+/)
+            .map(w => w.trim())
+            .filter(w => w != '');
+        const wordList: Word[] = [];
+        for (let i = 0; i < words.length; ++i) {
+            wordList.push(<Word> {
+                name: words[i],
+                transcript: transcripts[i]
+            })
+        }
 
-        this.dictionary = [...unique];
+        this.dictionary = wordList;
         this.name = String(doc.name);
         this.description = String(doc.description);
         this.warning = Boolean(doc.warn);

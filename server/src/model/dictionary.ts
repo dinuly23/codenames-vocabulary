@@ -1,8 +1,10 @@
+import { Word } from "./word";
+
 export interface Dictionary {
     name: string;
     description: string
     warning: boolean;
 
-    getWords(): string[];
-    getRandomWords(count: number): string[];
+    getWords(): Word[];
+    getRandomWords(count: number): Word[];
 }

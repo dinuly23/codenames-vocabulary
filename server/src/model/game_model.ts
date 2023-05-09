@@ -7,6 +7,7 @@ import { GameMove } from './game_move';
 import { PlayerSide } from './player_side';
 import shuffle = require('shuffle-array');
 import generateId = generate_id.generateId;
+import { Word } from './word';
 
 export class GameModel {
     readonly boardSize = 25;
@@ -59,11 +60,12 @@ export class GameModel {
         return this.rootGame;
     }
 
-    init(names: string[]) {
+    init(names: Word[]) {
         if (!names || names.length < this.boardSize)
             throw Error(`Game needs at least ${this.boardSize} words for init.`);
 
         const boardConfig = GameModel.createRandomizedAgentsSidesList(this.boardSize);
+        console.log(boardConfig);
         this.move = {
             side: boardConfig.firstMove,
             hint: '',
@@ -77,9 +79,11 @@ export class GameModel {
 
         this.board = [];
         for (let i = 0; i < this.boardSize; i++) {
+            let word = names.pop();
             this.board.push({
                 index: i,
-                name: names.pop()!,
+                name: word?.name,
+                transcript: word?.transcript,
                 side: boardConfig.sides.pop()!,
                 uncovered: false
             });
