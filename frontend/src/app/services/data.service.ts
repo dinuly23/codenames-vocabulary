@@ -12,7 +12,7 @@ export class DataService {
 
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: 'http://localhost:8095',
+      baseURL: `${window.location.protocol}//${window.location.hostname}:${window.location.port}`,
       // Add any other configuration here, such as headers, timeout, etc.
     });
   }
