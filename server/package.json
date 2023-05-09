@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "npx rimraf ../dist/server && npx rimraf ../dist/data",
     "build": "npx tsc && npx copy-node-modules ./ ../dist/server",
-    "postbuild": "cd .. && cp-cli ./data ./dist/data/",
+    "postbuild": "cd .. && cp-cli ./data ./dist/data/ && echo \"bcb4040\" > ./dist/server/version",
     "start": "node ../dist/server/main.js",
     "start-dev": "env NODE_ENV=development node ../dist/server/main.js",
     "format": "prettier --write \"src/**/*.ts\"",
