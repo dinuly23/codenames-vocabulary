@@ -7,7 +7,7 @@ export module generate_id {
      * processing pipeline within logging system.
      */
     export function generateId(idLength = 8) {
-        const chars = [];
+        const chars: String[] = [];
         for (let i = 0; i < idLength; i++) {
             chars.push(ALPHABET.charAt(Math.floor(Math.random() * ALPHABET.length)));
         }

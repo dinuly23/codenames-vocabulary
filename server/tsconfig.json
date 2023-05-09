@@ -14,6 +14,7 @@
     "target": "es2017",
     "sourceMap": true,
     "incremental": true,
+    "noImplicitAny": false,
     "lib": [
       "es2017"
     ],
