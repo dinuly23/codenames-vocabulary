@@ -5,6 +5,10 @@
   "author": "dina",
   "private": true,
   "license": "GPL 3.0",
+  "engines": {
+    "node": "18.12.1",
+    "npm": "9.5.0"
+  },
   "scripts": {
     "install": "cd ./server && npm install && cd ../frontend && npm install && cd ..",
     "build": "cd ./server && npm run build && cd ../frontend && npm run build && cd ..",
