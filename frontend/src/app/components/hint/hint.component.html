@@ -1,0 +1,10 @@
+<form (ngSubmit)="commitHint()" #submitInputForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label translate="INPUT_HINT"></mat-label>
+      <input matInput [(ngModel)]="inputValue" name="inputValue" required />
+      <mat-hint translate="EXAMPLE_HINT" align="end"></mat-hint>
+    </mat-form-field>
+  
+    <button mat-raised-button translate="BUTTON_SEND" 
+            class="send-button" type="submit" [disabled]="!submitInputForm.valid"></button>
+</form>

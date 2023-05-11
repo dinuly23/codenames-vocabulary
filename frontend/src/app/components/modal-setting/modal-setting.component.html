@@ -1,1 +1,31 @@
-<p>modal-setting works!</p>
+<mat-card >
+    <mat-card-content>
+        <mat-form-field appearance="fill">
+            <mat-label translate="MY_ROLE"></mat-label>
+            <mat-select  required [(ngModel)]="gameRole" #gameRoleField="ngModel"> 
+                <mat-option *ngFor="let role of selectorRole| keyvalue" [value]="role.value">
+                    {{role.key}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error translate="MY_ROLE_ERROR" *ngIf="gameRoleField.invalid && gameRoleField.touched">
+        </mat-error>
+    </mat-card-content>
+
+    <mat-card-content>
+        <mat-form-field appearance="fill">
+            <mat-label translate="SELECT_DICT"></mat-label>
+            <mat-select required [(ngModel)]="gameDictionary" #gameDictionaryField="ngModel">
+                <mat-option *ngFor="let dictionary of selectorDictionary | keyvalue" [value]="dictionary.value">
+                    {{dictionary.key}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error translate="SELECT_DICT_ERROR" *ngIf="gameDictionaryField.invalid && gameDictionaryField.touched">
+        </mat-error>
+    </mat-card-content>
+
+    <mat-card-content>
+        <button translate="BUTTON_START" mat-raised-button class="submit-button" (click)="createGame()"></button>
+    </mat-card-content>
+</mat-card>

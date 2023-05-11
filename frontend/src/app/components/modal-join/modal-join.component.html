@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label translate="MY_ROLE"></mat-label>
+            <mat-select required [(ngModel)]="gameRole" #gameRoleField="ngModel">
+                <mat-option *ngFor="let role of selectorRole | keyvalue" [value]="role.value">
+                    {{role.key}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error translate="MY_ROLE_ERROR" *ngIf="gameRoleField.invalid && gameRoleField.touched">
+        </mat-error>
+    </mat-card-content>
+
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label translate="GAME_CODE"></mat-label>
+            <input matInput required placeholder="Enter game code" 
+                [(ngModel)]="codeGame" #codeGameField="ngModel" >
+        </mat-form-field>
+        <mat-error translate="GAME_CODE_ERROR" *ngIf="codeGameField.invalid && codeGameField.touched">
+        </mat-error>
+    </mat-card-content>
+
+    <mat-card-content>
+        <button mat-raised-button translate="BUTTON_JOIN" class="submit-button" (click)="joinGame()"></button>
+    </mat-card-content>
+</mat-card>

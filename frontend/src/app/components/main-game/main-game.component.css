@@ -4,3 +4,10 @@ app-root {
     padding: 0;
     width: 100%;
 }
+
+.gameId{
+    display: flex;
+    align-self: flex-end;
+    color: white;
+    padding: 1em;
+}

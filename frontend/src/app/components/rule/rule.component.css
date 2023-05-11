@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+}
+
+.rule{
+    display: flex;
+    align-self: center;
+    width: 40%;
+    background-color: rgba(137, 43, 226, 0.559);
+    padding: 1em;
+    color: white;
+}

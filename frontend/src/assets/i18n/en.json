@@ -2,6 +2,22 @@
     "HOME": "Home",
     "GAME": "Game",
     "RULES": "Rules",
-    "RULE_TEXT": "ewfpinweipfwniefwe\nfewfpinwipefnweinfipwenfipnewf\nwefipwnefipnwefipnweifnwepifnweipf\nwefwienfpiwenfipwenfipwenfipwenf"
-  }
-  
+    "RULE_TEXT": "Team captains are informed about which of the 25 cards belong to their team. They give hints to the players who guess the code words, a hint is one word and a number. The team that reveals all their cards first wins. It is best to come up with a keyword that simultaneously explains two or more code names. There should only be one hint, various hints, gestures, facial expressions, and conversations are prohibited. Captains should not react to discussions at the game table and reveal their emotions. You can think as much as you want. The team's task is to give at least one answer. If you make a mistake, the turn is passed to the opponents. Participants also have the opportunity to guess one more word than the number announced by the captain. The game comes to an end when one of the teams has guessed all their words, or if any player reveals the black card.",
+    "SELECT_DICT": "Select a dictionary",
+    "SELECT_DICT_ERROR": "Dictionary is required",
+    "BUTTON_START" : "Start",
+    "MY_ROLE" : "My role",
+    "MY_ROLE_ERROR": "Role is required",
+    "GAME_CODE": "Game code",
+    "GAME_CODE_ERROR": "Game code is required",
+    "BUTTON_JOIN": "Join",
+    "BUTTON_NEW_GAME": "New game",
+    "BUTTON_JOIN_GAME": "Join the game",
+    "INPUT_HINT": "Input hint for your team",
+    "EXAMPLE_HINT": "example: apple 3",
+    "BUTTON_SEND": "Send",
+    "ERROR_404" : "404 - Page Not Found",
+    "ERROR_500" : "500 - Internal Server Error",
+    "ERROR_TEXT": "The requested page could not be found or an error occurred on the server. Please try again later.",
+    "ERROR_LINK": "Back to Home"
+}

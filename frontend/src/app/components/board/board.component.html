@@ -1,10 +1,14 @@
-<button (click)="getGameStatus()">status game</button>
-<div class="game-board">
+<div class="hint-conteiner" *ngIf="playerType == 0" [ngStyle]="{'background-color': getColorTeam()}">
+     {{ hint }} 
+</div>
+<div class="game-board" *ngIf="cards[0]">
     <div class="game-row" *ngFor="let row of [0, 1, 2, 3, 4]">
         <div class="game-card neonText" *ngFor="let col of [0, 1, 2, 3, 4]">
-            <mat-card class="mat-card">
+            <mat-card class="mat-card" 
+                (click)="playerType == 0 ? uncoverCard(row * 5 + col) : null"
+                [ngStyle]="{'background-color': getBackgroundColor(cards[row * 5 + col]?.side)}">
                 <mat-card-content class="mat-card-content">
-                    {{ cards[row * 5 + col].name }}
+                    {{ cards[row * 5 + col]?.name }}
                 </mat-card-content >
                 <hr class="white-line" />
                 <div class="transcript">
@@ -14,8 +18,8 @@
                             &#xf028;
                     </button>
                 </mat-card-actions>
-                <mat-card-content class="mat-card-content" #cardContent>
-                    {{ cards[row * 5 + col].transcript}}
+                <mat-card-content class="mat-card-content"  #cardContent>
+                    {{ cards[row * 5 + col]?.transcript}}
                 </mat-card-content>
                 </div>
             </mat-card>

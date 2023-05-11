@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Card } from 'src/app/interfaces/card.interface';
 import { Side } from 'src/app/enums/side.enum';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -11,21 +12,83 @@ import { Side } from 'src/app/enums/side.enum';
 export class BoardComponent implements OnInit {
   cards: Card[] = [];
   gameId: string = '';
-  name = '';
-  side = Side.unknown;
-  uncovered = false;
-  uncoveringInProgress: number | boolean = false;
-  fontSize = 0;
+  hint: string = '';
+  team: number = 1;
+
+  @Input() playerType: number = 0;
+
+  statusSubscription: Subscription | undefined;
+  statusInterval = 5000;
 
   constructor(private dataService: DataService) {}
 
-  getGameStatus(): string {
-    // this.dataService.commitCode();
+  getGameStatus(): void {
     let gameCode = this.dataService.getSatus().then(
       (data) => {
         // Handle the successful output here
         this.cards = data.game.board;
-        console.log('Game status:', this.cards);
+        this.hint = data.game.move.hint+' '+data.game.move.count;
+        this.team = data.game.move.side;
+        console.log('Game status in component:', data);
+      },
+      (error) => {
+        // Handle any errors here
+        console.error('Error creating game:', error);
+      }
+    );
+    
+  }
+  
+  ngOnInit(): void {
+    this.getGameStatus();
+    if(this.playerType == 0){
+      this.statusSubscription = interval(this.statusInterval).subscribe(() => {
+        this.getGameStatus();
+      });
+    }  
+  }
+
+  ngOnDestroy(): void {
+    if(this.playerType == 0){
+      this.stopStatusUpdates();
+    }
+  }
+  
+  stopStatusUpdates(): void {
+    if (this.statusSubscription) {
+      this.statusSubscription.unsubscribe();
+    }
+  }
+
+  playCardContent(text: string, lang: string = 'ja-JP') {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang; 
+
+    synth.speak(utterance);
+  }
+
+  getBackgroundColor(side: number | undefined): string {
+    if (side === undefined) {
+      return 'defaultColor';
+    }
+    const backgroundColors = ['defaultColor', 'red', 'blue', 'black', 'burlywood'];
+    return backgroundColors[side] || 'defaultColor';
+  }
+
+  getColorTeam():string{
+    if(this.team == 1){
+      return 'red';
+    }else if(this.team == 2){
+      return 'blue';
+    }
+    return 'defaultColor';
+  }
+
+  uncoverCard(index: number): string {
+    let gameCode = this.dataService.uncoverCard(index).then(
+      (data) => {
+        console.log('Uncover status:', data);
         return data;
       },
       (error) => {
@@ -37,18 +100,5 @@ export class BoardComponent implements OnInit {
     
     return "";
   }
-  
-  ngOnInit(): void {
-    //this.getGameStatus();
-  }
-
-  playCardContent(text: string, lang: string = 'ja-JP') {
-    const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang; 
-
-    synth.speak(utterance);
-  }
-
 }
 

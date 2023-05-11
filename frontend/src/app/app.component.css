@@ -76,12 +76,13 @@ app-root {
 /* Language Dropdown */
 .language-dropdown {
     display: flex;
+    flex-direction: row;
     align-items: center;
     position: relative;
 }
 
 .language-button {
-    background-color: #3f51b5;
+    background-color:  rgb(107, 29, 202);
     color: white;
     font-weight: bold;
     border: none;
@@ -101,9 +102,10 @@ app-root {
     right: 0;
     top: 75%;
     min-width: 100px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    background-color: #8144b6a8;
+    color: white;
+    box-shadow: 0px 8px 16px 0px rgba(21, 207, 244, 0.475);
+    z-index: 2000;
     border-radius: 3px;
 }
 
@@ -112,7 +114,7 @@ app-root {
 }
 
 .language-menu a {
-    color: black;
+    color: white;
     padding: 8px 12px;
     text-decoration: none;
     display: block;
@@ -121,6 +123,7 @@ app-root {
 
 .language-menu a:hover {
     background-color: #f1f1f1;
+    color:rgba(71, 6, 107, 0.475);
     cursor: pointer;
 }
 
@@ -170,4 +173,3 @@ app-root {
         height: 7vh;
     }
   }
-  

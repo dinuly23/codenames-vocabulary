@@ -13,16 +13,15 @@
             <li [routerLinkActive]="'activ'">
                 <a [routerLink]="['rules']" translate="RULES"></a>
             </li>
-            <li class="language-dropdown">
-                <button class="language-button" (mouseenter)="openDropdown()">{{ currentLanguage }}</button>
-                <div class="language-menu" *ngIf="dropdownOpen">
-                    <a (click)="changeLanguage('en')">English</a>
-                    <a (click)="changeLanguage('ru')">Русский</a>
-                    <a (click)="changeLanguage('kz')">Қазақ</a>
-                </div>
-            </li>
         </ul>
-        
+        <div class="language-dropdown">
+            <button class="language-button" (mouseenter)="openDropdown()">{{ currentLanguage }}</button>
+            <div class="language-menu" *ngIf="dropdownOpen">
+                <a (click)="changeLanguage('en')">English</a>
+                <a (click)="changeLanguage('ru')">Русский</a>
+                <a (click)="changeLanguage('kz')">Қазақ</a>
+            </div>
+        </div>
     </div>
     <div>
         <router-outlet></router-outlet>

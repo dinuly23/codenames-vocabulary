@@ -1,2 +1,3 @@
-<button (click)="createGame()">Start game</button>
-<app-board></app-board>
+<app-board [playerType]="playerType"></app-board>
+<app-hint *ngIf="playerType == 1"></app-hint>
+<div class="gameId"><h2>{{ gameId }}</h2></div>

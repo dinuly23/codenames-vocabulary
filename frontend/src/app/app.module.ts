@@ -15,6 +15,16 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ModalSettingComponent } from './components/modal-setting/modal-setting.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { ModalJoinComponent } from './components/modal-join/modal-join.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { ErrorComponent } from './components/error/error.component';
+import { HintComponent } from './components/hint/hint.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -26,7 +36,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainGameComponent,
     HomeComponent,
     RuleComponent,
-    ModalSettingComponent
+    ModalSettingComponent,
+    ModalJoinComponent,
+    ErrorComponent,
+    HintComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +47,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

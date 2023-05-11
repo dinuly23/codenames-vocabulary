@@ -75,3 +75,15 @@
   background: linear-gradient(90deg, rgba(255,161,213,1) 0%, rgba(104,28,251,1) 99%);
 }
 
+.hint-conteiner{
+  display: flex;
+  align-self: center;
+  text-align: center;
+  width: 25%;
+  padding: 0.3em;
+  margin: 1em;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 14px 28px rgba(32, 203, 255, 0.25), 
+              0 10px 10px rgba(24, 229, 252, 0.199);
+}

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -6,23 +7,19 @@ import { DataService } from '../../services/data.service';
   templateUrl: './main-game.component.html',
   styleUrls: ['./main-game.component.css']
 })
-export class MainGameComponent {
-  constructor(private dataService: DataService) {}
+export class MainGameComponent implements OnInit{
+  gameId: string = '';
+  playerType: number = 0;
 
-  createGame(): string {
-    let gameCode = this.dataService.createGame().then(
-      (data) => {
-        // Handle the successful output here
-        console.log('Game created:', data);
-        return data;
-      },
-      (error) => {
-        // Handle any errors here
-        console.error('Error creating game:', error);
-        return error;
-      }
-    );
-    
-    return "";
-  }
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.gameId = params['gameId'];
+      this.playerType = params['playerType'];
+      
+      console.log(this.gameId, this.playerType);
+      // Perform necessary actions with gameId and playerType
+    })
+  }  ;
 }
