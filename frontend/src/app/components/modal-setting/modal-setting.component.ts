@@ -13,7 +13,7 @@ export class ModalSettingComponent{
   gameDictionary: number = 0;
   
   selectorRole = {Master: 1, Player: 0};
-  selectorDictionary = {'JLPT N5': 0, 'JLPT N4': 1, 'JLPT N3': 2};
+  selectorDictionary = {'MARUGOTO A2-1':0, 'JLPT N5': 1, 'JLPT N4': 2, 'JLPT N3': 3};
 
   constructor(private dataService: DataService,
               private dialogRef: MatDialogRef<ModalSettingComponent>,

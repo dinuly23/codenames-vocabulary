@@ -1,5 +1,6 @@
 export interface Card {
     name: string,
     transcript: string,
-    side: number
+    side: number,
+    uncovered?: boolean
 }

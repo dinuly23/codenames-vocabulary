@@ -87,3 +87,36 @@
   box-shadow: 0 14px 28px rgba(32, 203, 255, 0.25), 
               0 10px 10px rgba(24, 229, 252, 0.199);
 }
+
+.win-screen{
+  z-index: 1500;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; 
+  height: 40%; 
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 14px 28px rgba(32, 203, 255, 0.25), 
+              0 10px 10px rgba(24, 229, 252, 0.199);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.win-screen button{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: white;
+  color: #6b059e;
+  border-radius: 50%;
+}
+
+.win-screen h1{ 
+  position: relative;
+  text-align: center;
+  width: 100%;
+}

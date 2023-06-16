@@ -14,11 +14,14 @@ export class BoardComponent implements OnInit {
   gameId: string = '';
   hint: string = '';
   team: number = 1;
+  gameIsFinished: boolean = false;
+  winnerSide: number = 0;
+  winScreenIsShown: boolean = false; 
 
   @Input() playerType: number = 0;
 
   statusSubscription: Subscription | undefined;
-  statusInterval = 5000;
+  statusInterval = 1000;
 
   constructor(private dataService: DataService) {}
 
@@ -29,6 +32,10 @@ export class BoardComponent implements OnInit {
         this.cards = data.game.board;
         this.hint = data.game.move.hint+' '+data.game.move.count;
         this.team = data.game.move.side;
+        this.gameIsFinished = data.game.isFinished;
+        if(this.gameIsFinished) {
+          this.winnerSide = data.game.log[data.game.log.length - 1].sideWinner;
+        }
         console.log('Game status in component:', data);
       },
       (error) => {
@@ -41,11 +48,9 @@ export class BoardComponent implements OnInit {
   
   ngOnInit(): void {
     this.getGameStatus();
-    if(this.playerType == 0){
-      this.statusSubscription = interval(this.statusInterval).subscribe(() => {
-        this.getGameStatus();
-      });
-    }  
+    this.statusSubscription = interval(this.statusInterval).subscribe(() => {
+      this.getGameStatus();
+    });
   }
 
   ngOnDestroy(): void {
@@ -99,6 +104,11 @@ export class BoardComponent implements OnInit {
     );
     
     return "";
+  }
+
+  closeWinScreen() {
+    this.gameIsFinished = false;
+    this.winScreenIsShown = true;
   }
 }
 

@@ -6,7 +6,8 @@
         <div class="game-card neonText" *ngFor="let col of [0, 1, 2, 3, 4]">
             <mat-card class="mat-card" 
                 (click)="playerType == 0 ? uncoverCard(row * 5 + col) : null"
-                [ngStyle]="{'background-color': getBackgroundColor(cards[row * 5 + col]?.side)}">
+                [ngStyle]="{'background-color': getBackgroundColor(cards[row * 5 + col]?.side), 
+                            'opacity': cards[row * 5 + col]?.uncovered ? '0.2' : '1'}">
                 <mat-card-content class="mat-card-content">
                     {{ cards[row * 5 + col]?.name }}
                 </mat-card-content >
@@ -25,4 +26,9 @@
             </mat-card>
         </div>
     </div>
+</div>
+<div *ngIf="gameIsFinished && !winScreenIsShown" class="win-screen"
+    [ngStyle]="{'background-color': getBackgroundColor(winnerSide)}">
+    <h1 translate="WINNER"></h1>
+    <button (click)="closeWinScreen()">&times;</button>
 </div>

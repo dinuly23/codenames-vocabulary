@@ -10,7 +10,7 @@ import { DataService } from '../../services/data.service';
 export class MainGameComponent implements OnInit{
   gameId: string = '';
   playerType: number = 0;
-
+  
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {

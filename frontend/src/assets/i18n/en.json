@@ -19,5 +19,6 @@
     "ERROR_404" : "404 - Page Not Found",
     "ERROR_500" : "500 - Internal Server Error",
     "ERROR_TEXT": "The requested page could not be found or an error occurred on the server. Please try again later.",
-    "ERROR_LINK": "Back to Home"
+    "ERROR_LINK": "Back to Home",
+    "WINNER": "Congratulations, WINNER!"
 }
