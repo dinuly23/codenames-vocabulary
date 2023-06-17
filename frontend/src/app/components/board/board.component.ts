@@ -4,6 +4,7 @@ import { Card } from 'src/app/interfaces/card.interface';
 import { Side } from 'src/app/enums/side.enum';
 import { interval, Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -30,11 +31,14 @@ export class BoardComponent implements OnInit {
       (data) => {
         // Handle the successful output here
         this.cards = data.game.board;
-        this.hint = data.game.move.hint+' '+data.game.move.count;
+        this.hint = (data.game.move.count === 0) ? '0' :
+                      `${data.game.move.hint} ${data.game.move.count-1} +1`;
         this.team = data.game.move.side;
         this.gameIsFinished = data.game.isFinished;
         if(this.gameIsFinished) {
-          this.winnerSide = data.game.log[data.game.log.length - 1].sideWinner;
+          this.winnerSide = (data.game.redLeft === 0 ) ? Side.red : 
+                            ((data.game.blueLeft === 0 ) ? Side.blue : 
+                            data.game.log[data.game.log.length - 1].sideWinner);
         }
         console.log('Game status in component:', data);
       },
